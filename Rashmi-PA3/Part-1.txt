@@ -1,0 +1,29 @@
+(1) the sql commands executed to create the function
+The sql command for function 'exp' gives error because the function already exists. 
+On Command-line
+ERROR 1304 (42000): FUNCTION exp already exists
+
+Instead if I change the function name as 'exp1' it gives the required output for multiplication of two integers.
+
+mysql> delimiter //
+mysql> create function exp1(a int,b int)
+    -> returns int
+    -> begin
+    -> declare c int;
+    -> set c =a*b;
+    -> return c;
+    -> end; //
+Query OK, 0 rows affected (0.00 sec)
+
+
+(2) the sql command to invoke the function
+select exp1(2,7);//
+
+
+(3) the result
++-------------+
+|   exp1(2,7) |
++-------------+
+|          14 |
++-------------+
+1 row in set (0.00 sec)
